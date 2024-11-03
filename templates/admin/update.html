@@ -1,0 +1,20 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+
+{% block content %}
+    <STYLE>
+        .rounded float-start{ width:100px; height:100px;}
+    </STYLE>
+</head>
+<body>
+<h3 class="text-dark"><u>Update Book</u></h3>
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+     {{ form.as_p }}
+    <input type="submit" value="update" class="btn btn-primary">
+</form>
+
+
+</body>
+{% endblock %}

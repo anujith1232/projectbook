@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the Book App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+  <style>
+        body {
+            background-image: url("{% static 'assets/img/avatars/okay.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+        }
+    </style>
+<body class="container mt-5">
+{% for msg in messages %}
+{{ msg }}
+{% endfor %}
+
+    <header class="text-center mb-4">
+        <h1>Welcome to the Book App</h1>
+    </header>
+
+    <div class="text-center">
+        {% if user.is_authenticated %}
+            <p class="lead">Hello, {{ user.username }}!</p>
+            <a href="{% url 'userapp:logout' %}" class="btn btn-danger">Logout</a>
+            <a href="{% url 'userapp:listbook' %}" class="btn btn-success">Enter Book Section</a>
+        {% else %}
+            <p class="lead">Welcome, Guest! Please <a href="{% url 'userapp:login' %}">login</a> or <a href="{% url 'userapp:register' %}">register</a> to access more features.</p>
+            <a href="{% url 'userapp:login' %}" class="btn btn-primary">Login</a>
+            <a href="{% url 'userapp:register' %}" class="btn btn-secondary">Register</a>
+        {% endif %}
+    </div>
+
+    <footer class="text-center mt-5">
+        <p>&copy; 2024 Book App. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+  <style>
+        body {
+            background-image: url("{% static 'assets/img/avatars/okay.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+        }
+    </style>
+
+<body>
+
+
+{% for msg in messages %}
+{{ msg }}
+{% endfor %}
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="text-center">Register</h2>
+            <form action="" method="post" class="transparent-form mt-4">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" id="username" class="form-control" placeholder="Enter Username" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="first_name">First Name:</label>
+                    <input type="text" name="first_name" id="first_name" class="form-control" placeholder="Enter Firstname" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="last_name">Last Name:</label>
+                    <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Enter Lastname" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="cpassword">Confirm Password:</label>
+                    <input type="password" name="cpassword" id="cpassword" class="form-control" placeholder="Confirm Password" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block" onclick="ShowAlert()">Register</button>
+            </form>
+
+            <div class="mt-3 text-center">
+                <p>Already have an account? <a href="{% url 'userapp:login' %}">Login here</a></p>
+            </div>
+        </div>
+    </div>
+<script src="{% static 'assets/js/scripts.js' %}"></script>
+</body>
+</html>

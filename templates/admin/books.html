@@ -1,0 +1,25 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<div class="container">
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <h1>Create Book</h1>
+        </div>
+        <div class="col-md-3">
+            <a href="{% url 'adminapp:author' %}" class="btn btn-primary btn-sm">Add Author</a>
+        </div>
+    </div>
+
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
+
+{% endblock %}
+

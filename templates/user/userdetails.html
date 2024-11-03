@@ -1,0 +1,17 @@
+{% extends 'user/base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+ <div class="card" style="width: 18rem;">
+  <img src="{{ books.image.url }}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{ books.title }}</h5>
+      <p class="card-text"> Book Author: {{ books.author }}</p>
+       <p class="card-text"> Book Price: {{ books.price }}</p>
+      <a href="{% url 'userapp:listbook' %}" class="btn btn-warning">Back</a>
+
+  </div>
+</div>
+{% endblock %}

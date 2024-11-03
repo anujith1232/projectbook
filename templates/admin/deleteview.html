@@ -1,0 +1,26 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            margin: 20px;
+        }
+        h1 {
+            color: #d9534f; /* Bootstrap danger color */
+        }
+    </style>
+<body>
+    <div class="container">
+        <h1 class="text-danger">Are you sure you want to delete "{{ books.title }}"?</h1>
+        <p><strong>Author:</strong> {{ books.author }}</p>
+        <p><strong>Price:</strong> ${{ books.price }}</p>
+
+        <form action="" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Confirm Delete</button>
+            <a href="{% url 'adminapp:listbook' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+{% endblock %}
